@@ -118,14 +118,14 @@ class HomeScreen extends StatelessWidget {
                   final containerTexts = [
                     'Scale',
                     'Slid',
-                    'PositionTransition',
-                    'RotationTransition',
-                    'SizeTransition',
+                    'Position',
+                    'Rotation',
+                    'Size',
                     'Text',
                     'Opacity',
                     'Align',
                     'CrossFade',
-                    'DecoratedBoxTransition',
+                    'DecoratedBox',
                   ];
 
                   return InkWell(

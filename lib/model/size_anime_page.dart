@@ -8,7 +8,7 @@ class SizeAnime extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Opacity animation',
+          'Size animation',
           style: TextStyle(
             color: Colors.white,
           ),
