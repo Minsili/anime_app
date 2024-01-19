@@ -8,7 +8,7 @@ class DboxAnime extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Opacity animation',
+          'DecoratedBox animation',
           style: TextStyle(
             color: Colors.white,
           ),

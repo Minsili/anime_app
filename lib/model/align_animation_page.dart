@@ -8,7 +8,7 @@ class AlignAnime extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Opacity animation',
+          'Align animation',
           style: TextStyle(
             color: Colors.white,
           ),
