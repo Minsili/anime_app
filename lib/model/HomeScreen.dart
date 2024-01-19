@@ -1,7 +1,17 @@
 import 'dart:math';
 
+import 'package:anime_app/model/Opacity_anime_page.dart';
+import 'package:anime_app/model/align_animation_page.dart';
 import 'package:anime_app/model/scale_anime-page.dart';
+import 'package:anime_app/model/size_anime_page.dart';
+import 'package:anime_app/model/slid_anime_page.dart';
+import 'package:anime_app/model/text_anime_page.dart';
 import 'package:flutter/material.dart';
+
+import 'PositionTransition_page.dart';
+import 'RotationTransition_page.dart';
+import 'crossFade_page.dart';
+import 'dBox_anime_page.dart';
 
 class HomeScreen extends StatelessWidget {
   var height, width;
@@ -107,15 +117,15 @@ class HomeScreen extends StatelessWidget {
                   // Define a list of texts for each container
                   final containerTexts = [
                     'Scale',
-                    'Container 2',
-                    'Container 3',
-                    'Container 4',
-                    'Container 5',
-                    'Container 6',
-                    'Container 7',
-                    'Container 8',
-                    'Container 9',
-                    'Container 10',
+                    'Slid',
+                    'PositionTransition',
+                    'RotationTransition',
+                    'SizeTransition',
+                    'Text',
+                    'Opacity',
+                    'Align',
+                    'CrossFade',
+                    'DecoratedBoxTransition',
                   ];
 
                   return InkWell(
@@ -130,7 +140,78 @@ class HomeScreen extends StatelessWidget {
                             ),
                           );
                           break;
-
+                        case 1:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Slid(),
+                            ),
+                          );
+                          break;
+                        case 2:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Position(),
+                            ),
+                          );
+                          break;
+                        case 3:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RotationAnime(),
+                            ),
+                          );
+                          break;
+                        case 4:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SizeAnime(),
+                            ),
+                          );
+                          break;
+                        case 5:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TextAnime(),
+                            ),
+                          );
+                          break;
+                        case 6:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OpAnime(),
+                            ),
+                          );
+                          break;
+                        case 7:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AlignAnime(),
+                            ),
+                          );
+                          break;
+                        case 8:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CrossFadeAnime(),
+                            ),
+                          );
+                          break;
+                        case 9:
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DboxAnime(),
+                            ),
+                          );
+                          break;
 
                       // Add more cases for each container/page
                       // ...
