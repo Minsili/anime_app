@@ -152,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Position(),
+                              builder: (context) => PositionedTransitionExample(),
                             ),
                           );
                           break;
@@ -160,7 +160,7 @@ class HomeScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RotationAnime(),
+                              builder: (context) => RotationTransitionExample(),
                             ),
                           );
                           break;
@@ -233,7 +233,10 @@ class HomeScreen extends StatelessWidget {
                       child: Center(
                         child: Text(
                           containerTexts[index], // Display the text for each container
-                          style: TextStyle(fontSize: 18, color: Colors.black),
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                          ),
                         ),
                       ),
                     ),

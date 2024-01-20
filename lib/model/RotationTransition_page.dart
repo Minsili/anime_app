@@ -1,17 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const RotationTransitionExampleApp());
-
-class RotationTransitionExampleApp extends StatelessWidget {
-  const RotationTransitionExampleApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: RotationTransitionExample(),
-    );
-  }
-}
 
 class RotationTransitionExample extends StatefulWidget {
   const RotationTransitionExample({Key? key}) : super(key: key);
@@ -54,7 +42,7 @@ class _RotationTransitionExampleState extends State<RotationTransitionExample>
       backgroundColor: Colors.grey,
       appBar: AppBar(
         title: const Text(
-          'Illustration of Rotation Transition Animation',
+          'Rotation Transition Animation',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,

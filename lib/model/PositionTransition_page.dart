@@ -1,18 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const PositionedTransitionExampleApp());
-
-class PositionedTransitionExampleApp extends StatelessWidget {
-  const PositionedTransitionExampleApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: PositionedTransitionExample(),
-    );
-  }
-}
-
 class PositionedTransitionExample extends StatefulWidget {
   const PositionedTransitionExample({Key? key}) : super(key: key);
 
@@ -54,7 +41,7 @@ class _PositionedTransitionExampleState
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Illustration of Position Transition Animation',
+          'Position Transition Animation',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
