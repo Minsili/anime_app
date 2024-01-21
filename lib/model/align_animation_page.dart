@@ -32,7 +32,7 @@ class _AlignAnimeState extends State<AlignAnime> {
           child: Container(
             width: double.infinity,
             height: 250.0,
-            color: Colors.blueGrey,
+            color: Colors.blueAccent,
             //Purpose of the AnimatedAlign widget is to animate the transition of the widget
             child: AnimatedAlign(
                 alignment: selected ? Alignment.topRight : Alignment.bottomLeft,

@@ -1,27 +1,41 @@
 import 'dart:math';
-
-import 'package:anime_app/model/Opacity_anime_page.dart';
-import 'package:anime_app/model/align_animation_page.dart';
-import 'package:anime_app/model/scale_anime-page.dart';
-import 'package:anime_app/model/size_anime_page.dart';
-import 'package:anime_app/model/list_anime_page.dart';
-import 'package:anime_app/model/padding_anime_page.dart';
 import 'package:flutter/material.dart';
 
-import 'PositionTransition_page.dart';
-import 'RotationTransition_page.dart';
-import 'crossFade_page.dart';
-import 'dBox_anime_page.dart';
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
-class HomeScreen extends StatelessWidget {
-  var height, width;
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
-  //const HomeScreen({super.key});
+class _HomeScreenState extends State<HomeScreen> {
+   var height, width;
+   bool isAscending = true;
+
+   List<ContainerModel> containers = [
+     ContainerModel('Switcher', '/switcher'),
+     ContainerModel('List', '/list'),
+     ContainerModel('Position', '/position'),
+     ContainerModel('Rotation', '/rotation'),
+     ContainerModel('Size', '/size'),
+     ContainerModel('Padding', '/padding'),
+     ContainerModel('Opacity', '/opacity'),
+     ContainerModel('Align', '/align'),
+     ContainerModel('CrossFade', '/crossfade'),
+     ContainerModel('DecoratedBox', '/decoratedbox'),
+   ];
 
   @override
   Widget build(BuildContext context) {
     height = MediaQuery.of(context).size.height;
     width = MediaQuery.of(context).size.width;
+
+    if (isAscending) {
+      containers.sort((a, b) => a.name.compareTo(b.name));
+    } else {
+      containers.sort((a, b) => b.name.compareTo(a.name));
+    }
+
     return Scaffold(
       body: Container(
         color: Colors.indigo,
@@ -43,7 +57,12 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                           setState(() {
+                             isAscending = !isAscending;
+
+                           });
+                          },
                           child: Icon(
                             Icons.sort,
                             color: Colors.white,
@@ -63,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Home page',
+                        'Home',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 30,
@@ -105,7 +124,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 shrinkWrap: true,
                 physics: ScrollPhysics(),
-                itemCount: 10,
+                itemCount: containers.length,
                 itemBuilder: (BuildContext context, int index) {
                   final randomColor = Color.fromRGBO(
                     Random().nextInt(256),
@@ -114,108 +133,10 @@ class HomeScreen extends StatelessWidget {
                     1,
                   );
 
-                  // Define a list of texts for each container
-                  final containerTexts = [
-                    'Switcher',
-                    'List',
-                    'Position',
-                    'Rotation',
-                    'Size',
-                    'Padding',
-                    'Opacity',
-                    'Align',
-                    'CrossFade',
-                    'DecoratedBox',
-                  ];
-
                   return InkWell(
                     onTap: () {
                       // Handle container tap and navigate to a different page based on the index
-                      switch (index) {
-                        case 0:
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Switcher(),
-                            ),
-                          );
-                          break;
-                        case 1:
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ListAnime(),
-                            ),
-                          );
-                          break;
-                        case 2:
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PositionedTransitionExample(),
-                            ),
-                          );
-                          break;
-                        case 3:
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => RotationTransitionExample(),
-                            ),
-                          );
-                          break;
-                        case 4:
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SizeAnime(),
-                            ),
-                          );
-                          break;
-                        case 5:
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PaddingAnime(),
-                            ),
-                          );
-                          break;
-                        case 6:
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => OpAnime(),
-                            ),
-                          );
-                          break;
-                        case 7:
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AlignAnime(),
-                            ),
-                          );
-                          break;
-                        case 8:
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => CrossFadeAnime(),
-                            ),
-                          );
-                          break;
-                        case 9:
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DboxAnime(),
-                            ),
-                          );
-                          break;
-
-                      // Add more cases for each container/page
-                      // ...
-                      }
+                      Navigator.pushNamed(context, containers[index].route);
                     },
                     child: Container(
                       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
@@ -232,7 +153,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          containerTexts[index], // Display the text for each container
+                          containers[index].name, // Display the text for each container
                           style: TextStyle(
                               fontSize: 18,
                               color: Colors.white,
@@ -250,4 +171,11 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class ContainerModel{
+  final String name;
+  final String route;
+
+  ContainerModel(this.name, this.route);
 }

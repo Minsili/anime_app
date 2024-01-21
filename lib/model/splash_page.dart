@@ -1,19 +1,18 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:anime_app/model/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Welcome extends StatefulWidget {
-  const Welcome({Key? key}) : super(key: key);
+  const Welcome({Key? key});
 
   @override
   State<Welcome> createState() => _WelcomeState();
 }
 
-class _WelcomeState extends State<Welcome>
-    with SingleTickerProviderStateMixin {
+class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late Animation<double> _opacityAnimation;
-  late Animation<double> _sizeAnimation;
+  late Animation<double> _scaleAnimation;
 
   @override
   void initState() {
@@ -21,45 +20,40 @@ class _WelcomeState extends State<Welcome>
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
     _animationController = AnimationController(
-      duration: const Duration(seconds: 2),
       vsync: this,
+      duration: Duration(milliseconds: 1000),
     );
-
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+    _scaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _animationController,
-        curve: Curves.easeIn,
-      ),
-    );
-
-    _sizeAnimation = Tween<double>(begin: 50.0, end: 80.0).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeIn,
+        curve: Curves.easeInOut,
       ),
     );
 
     _animationController.forward();
 
-    Future.delayed(
-      Duration(seconds: 5),
-          () {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (_) => HomeScreen(),
-          ),
-        );
-      },
-    );
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.of(context).pushReplacement(
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => HomeScreen(),
+          transitionsBuilder: (_, animation, __, child) {
+            return ScaleTransition(
+              scale: _scaleAnimation,
+              child: child,
+            );
+          },
+        ),
+      );
+    });
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
     SystemChrome.setEnabledSystemUIMode(
       SystemUiMode.manual,
       overlays: SystemUiOverlay.values,
     );
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -68,9 +62,9 @@ class _WelcomeState extends State<Welcome>
     return Scaffold(
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue, Colors.purpleAccent],
+            colors: [Colors.blue, Colors.purple],
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
           ),
@@ -78,20 +72,10 @@ class _WelcomeState extends State<Welcome>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AnimatedOpacity(
-              opacity: _opacityAnimation.value,
-              duration: const Duration(seconds: 2),
-              curve: Curves.easeIn,
-              child: AnimatedContainer(
-                duration: const Duration(seconds: 2),
-                height: _sizeAnimation.value,
-                width: _sizeAnimation.value,
-                child: Icon(
-                  Icons.edit,
-                  color: Colors.white,
-                  size: 80,
-                ),
-              ),
+            Icon(
+              Icons.account_balance_sharp,
+              size: 80,
+              color: Colors.white,
             ),
             SizedBox(
               height: 20,
@@ -101,9 +85,9 @@ class _WelcomeState extends State<Welcome>
               style: TextStyle(
                 fontStyle: FontStyle.italic,
                 color: Colors.white,
-                fontSize: 32,
+                fontSize: 20,
               ),
-            ),
+            )
           ],
         ),
       ),

@@ -39,7 +39,7 @@ class _RotationTransitionExampleState extends State<RotationTransitionExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           'Align animation',
@@ -52,9 +52,14 @@ class _RotationTransitionExampleState extends State<RotationTransitionExample>
       body: Center(
         child: RotationTransition(
           turns: _animation,
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: FlutterLogo(size: 150.0),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/image/earth.png', // Replace with your image path
+              width: 400.0,
+              height: 400.0,
+
+            ),
           ),
         ),
       ),
