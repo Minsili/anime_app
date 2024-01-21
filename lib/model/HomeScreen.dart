@@ -4,8 +4,8 @@ import 'package:anime_app/model/Opacity_anime_page.dart';
 import 'package:anime_app/model/align_animation_page.dart';
 import 'package:anime_app/model/scale_anime-page.dart';
 import 'package:anime_app/model/size_anime_page.dart';
-import 'package:anime_app/model/slid_anime_page.dart';
-import 'package:anime_app/model/text_anime_page.dart';
+import 'package:anime_app/model/list_anime_page.dart';
+import 'package:anime_app/model/padding_anime_page.dart';
 import 'package:flutter/material.dart';
 
 import 'PositionTransition_page.dart';
@@ -116,12 +116,12 @@ class HomeScreen extends StatelessWidget {
 
                   // Define a list of texts for each container
                   final containerTexts = [
-                    'Scale',
-                    'Slid',
+                    'Switcher',
+                    'List',
                     'Position',
                     'Rotation',
                     'Size',
-                    'Text',
+                    'Padding',
                     'Opacity',
                     'Align',
                     'CrossFade',
@@ -136,7 +136,7 @@ class HomeScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Scale(),
+                              builder: (context) => Switcher(),
                             ),
                           );
                           break;
@@ -144,7 +144,7 @@ class HomeScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Slid(),
+                              builder: (context) => ListAnime(),
                             ),
                           );
                           break;
@@ -176,7 +176,7 @@ class HomeScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => TextAnime(),
+                              builder: (context) => PaddingAnime(),
                             ),
                           );
                           break;

@@ -41,14 +41,13 @@ class _RotationTransitionExampleState extends State<RotationTransitionExample>
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: const Text(
-          'Rotation Transition Animation',
+        title: Text(
+          'Align animation',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
+            color: Colors.white,
           ),
         ),
-        centerTitle: true,
+        backgroundColor: Colors.blue,
       ),
       body: Center(
         child: RotationTransition(

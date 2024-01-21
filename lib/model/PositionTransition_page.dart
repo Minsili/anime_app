@@ -45,12 +45,14 @@ class _PositionedTransitionExampleState
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
+            color: Colors.white
           ),
         ),
+        backgroundColor: Colors.blueAccent,
         centerTitle: true,
       ),
       body: Container(
-        color: Colors.green,
+        color: Colors.white10,
         alignment: Alignment.center,
         child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
@@ -86,7 +88,7 @@ class _PositionedTransitionExampleState
                         width: bigLogo,
                         height: bigLogo,
                         decoration: BoxDecoration(
-                          color: Colors.black,
+                          color: Colors.greenAccent,
                           boxShadow: const [
                             BoxShadow(
                               color: blackWithOpacity,
