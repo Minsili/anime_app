@@ -1,4 +1,3 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:anime_app/model/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

@@ -38,7 +38,7 @@ class _CrossFadeAnimeState extends State<CrossFadeAnime> {
                 });
               },
               child: Text(
-                  'Swicth',
+                  'Switch',
                 style: TextStyle(
                   color: Colors.lightBlue,
                   fontWeight: FontWeight.w400,
