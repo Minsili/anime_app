@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class RotationTransitionExample extends StatefulWidget {
   const RotationTransitionExample({Key? key}) : super(key: key);
 
@@ -27,7 +26,7 @@ class _RotationTransitionExampleState extends State<RotationTransitionExample>
   }
 
   void _startAnimation() {
-    _controller.repeat(reverse: true); // <-- Start repeating here
+    _controller.repeat(reverse: true);
   }
 
   void _stopAnimation() {
@@ -39,26 +38,33 @@ class _RotationTransitionExampleState extends State<RotationTransitionExample>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: Text(
-          'Align animation',
+          'Rotation animation',
           style: TextStyle(
             color: Colors.white,
           ),
         ),
         backgroundColor: Colors.blue,
       ),
-      body: Center(
-        child: RotationTransition(
-          turns: _animation,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              'assets/image/earth.png', // Replace with your image path
-              width: 400.0,
-              height: 400.0,
-
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/sky_with_stars.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: RotationTransition(
+            turns: _animation,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+                'assets/image/earth.png',
+                width: 400.0,
+                height: 400.0,
+              ),
             ),
           ),
         ),
