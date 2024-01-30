@@ -51,7 +51,7 @@ class _RotationTransitionExampleState extends State<RotationTransitionExample>
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/sky_with_stars.jpg'),
+            image: AssetImage('assets/image/sky_with_stars.jpg'),
             fit: BoxFit.cover,
           ),
         ),
